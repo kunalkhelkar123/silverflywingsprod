@@ -1,4 +1,4 @@
-import Header11 from "@/components/header/header-11";
+// import Header11 from "@/components/header/header-11";
 import DropdownSelelctBar from "@/components/hotel-list/common/DropdownSelelctBar";
 import MapPropertyFinder from "@/components/hotel-list/common/MapPropertyFinder";
 import Pagination from "@/components/hotel-list/common/Pagination";
@@ -19,7 +19,7 @@ const index = () => {
       <div className="header-margin"></div>
       {/* header top margin */}
 
-      <Header11 />
+       {/* <Header11 /> */}
       {/* End Header 1 */}
 
       <section className="halfMap">
