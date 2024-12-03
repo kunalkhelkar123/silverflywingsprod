@@ -51,13 +51,13 @@ const App = () => {
       <DefaultHeader />
       <Container className="mt-5">
         <Row className="justify-content-center" style={{ marginTop: "150px" }}>
-          {properties.map((travel) => (
+          {properties.map((packages) => (
             <Col
               lg={4}
               md={4}
               sm={6}
               xs={12}
-              key={travel.package_id}
+              key={packages.package_id}
               className="d-flex justify-content-center mb-4"
             >
               <Card
@@ -72,35 +72,35 @@ const App = () => {
                 <Card.Img
                   variant="top"
                   src={`/images/sun.jpeg`} // Replace with actual image logic
-                  alt={travel.package_name}
+                  alt={packages.package_name}
                   style={{ height: "200px", objectFit: "cover" }}
                 />
                 <Card.Body>
-                  <Card.Title>{travel.package_name}</Card.Title>
-                  {/* <Card.Text className="text-muted">{travel.cities}</Card.Text> */}
+                  <Card.Title>{packages.package_name}</Card.Title>
+                  {/* <Card.Text className="text-muted">{packages.cities}</Card.Text> */}
                   <Row>
                     <Col>
                       <span className="text-2xl" role="img" aria-label="calendar">
                         📅
                       </span>{" "} <br/>
-                      {travel.package_duration} Days
+                      {packages.package_duration} Days
                     </Col>
                     <Col>
                       <span role="img" aria-label="globe">
                         🌍
                       </span>{" "}
-                      {travel.country.length} Country
+                      {packages.country.length} Country
                     </Col>
                     <Col>
                       <span role="img" aria-label="pin">
                         📍
                       </span>{" "}
-                      {travel.cities.length} <br/>
+                      {packages.cities.length} <br/>
                        Cities
                     </Col>
                   </Row>
                   <h6 className="mt-3">Starting From</h6>
-                  <h5>INR:  {travel.packageprice} -/ Per Person</h5>
+                  <h5>INR:  {packages.packageprice} -/ Per Person</h5>
                   <div className="d-flex justify-content-between mt-3">
                     <Button
                       variant="outline-primary"
@@ -109,7 +109,7 @@ const App = () => {
                     >
                       Enquire Now
                     </Button>
-                    <Link href={`/packages?id=${travel.package_id}`} passHref>
+                    <Link href={{ pathname: "/details", query: { id: `${packages.package_id}` } }} passHref>
                       <Button variant="danger" size="sm">
                         View Details
                       </Button>
