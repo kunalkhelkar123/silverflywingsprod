@@ -4,47 +4,53 @@ export async function POST(req, resolve) {
   try {
     const body = await req.json();
     // Log the parsed body data
-    console.log("Received body data:", body.property_name);
+    console.log("body tour-itlernary    ", body)
+
+
+    if (!Array.isArray(body) || body.length === 0) {
+      return new Response(
+        JSON.stringify({ message: "Invalid or empty data" }),
+        { status: 400, headers: { "Content-Type": "application/json" } }
+      );
+    }
     try {
-      const {
-        package_id,
-        day,
-        day_title,
-        day_description,
-        day_note
-      } = body;
-
-      console.log("datatatatata",
-        package_id,
-        day,
-        day_title,
-        day_description,
-        day_note);
-
-
       const query = `
         INSERT INTO tour_itlernary_master (package_id, day, day_title, day_description, day_note)
         VALUES (?, ?, ?, ?, ?)
       `;
 
+      // Iterate over the array
+      for (const item of body) {
+        const {package_id, day, head, description, notes } = item;
 
-      const values = [
-        package_id,
-        day,
-        day_title,
-        day_description,
-        day_note
-      ];
+        // Validate each item
+        if (!day || !head || !description) {
+          console.error("Invalid data:", item);
+          // results.push({ day, status: "failed", message: "Missing required fields" });
 
-      console.log("query ==> ", query);
-      console.log("valuessss==> ", values)
-      // Execute the query
-      await db.query(query, values).then((resolve) => {
+          return new Response(JSON.stringify({ message: "Missing required fields" }), {
+            status: 200,
+          });
+        }
 
-        console.log("success-==>", resolve)
-      })
+        try {
+          // Execute the insert query
+          const [results] = await db.query(query, [package_id, day, head, description, notes || ""]);
+          console.log("Insert ID:", results.insertId);
+          // Return success response
+          
+        }
 
-      // Return success response
+        catch (error) {
+          console.error(`Error inserting record for day:`, error.message);
+          return new Response(JSON.stringify({ message: "Error inserting record for day" }), {
+            status: 500,
+          });
+          // results.push({ day, status: "failed", message: error.message });
+        }
+      }
+
+
       return new Response(JSON.stringify({ message: "tour_itlernary data Saved" }), {
         status: 200,
       });

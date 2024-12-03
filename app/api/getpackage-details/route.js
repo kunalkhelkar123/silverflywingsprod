@@ -1,42 +1,27 @@
+
 import db from "../../configs/db"
 
 export async function POST(req, resolve) {
   try {
     const body = await req.json();
-    // Log the parsed body data
     console.log("body     ", body)
-
     try {
       const {
-        package_name, package_duration, country, cities, packageprice
-      } = body; 
-
-      console.log("datatatatata", package_name, package_duration, country, cities,packageprice);
-
-
+        country
+      } = body;
+      console.log("id", country);
       const query = `
-           INSERT INTO package_details_master (package_name, package_duration, country, cities,packageprice )
-VALUES (?, ?, ?, ?,?);
+        SELECT * FROM package_details_master WHERE country=?;
 
           `;
-
-      const values = [
-        package_name, package_duration, country, cities,packageprice
-      ];
-
-
       console.log("query ==> ", query);
-      console.log("valuessss==> ", values)
-      // Execute the query
-      const [results] = await db.query(query, values);
-
-      console.log("Insert ID:", results.insertId);
-      // resolve.json({ insertId: results.insertId , message: "Package data received"  });
+      const [results] = await db.query(query, country);
+      console.log("Insert ID:", results);
 
       // Return success response
       return new Response(
         JSON.stringify({
-          insertId: results.insertId,  // Assuming 'results' contains the inserted row data
+          results: results,  
           message: "Package data received"
         }),
         {
@@ -58,9 +43,3 @@ VALUES (?, ?, ?, ?,?);
     );
   }
 }
-
-
-
-
-
-
