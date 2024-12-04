@@ -1,8 +1,8 @@
 
 'use client'
 import React, { useEffect, useState } from 'react';
-import { destinations11 } from "@/data/desinations";
- import Packages from "../../(Packages)/Packages/page"
+// import { destinations11 } from "@/data/desinations";
+//  import Packages from "../../Packages/Packages/page"
 
 import Link from "next/link";
 import Image from "next/image";
@@ -72,7 +72,7 @@ const PackageCard = () => {
             <h4 className="text-26 md:text-20 lh-13 text-white mb-20">
               {item.country}
             </h4>
-            <Link href={{ pathname: "/Packages", query: { country: `${item.country}` } }}><button className="button col-12 h-60 -blue-1 bg-white text-dark-1">
+            <Link href={{ pathname: "/packages", query: { country: `${item.country}` } }}><button className="button col-12 h-60 -blue-1 bg-white text-dark-1">
               Explore More
             </button></Link>
           </div>

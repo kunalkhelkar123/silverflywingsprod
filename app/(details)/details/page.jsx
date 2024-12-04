@@ -1,14 +1,17 @@
 'use client'
-import React, { useEffect, useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useEffect, useState, Suspense } from "react";
+// import "bootstrap/dist/css/bootstrap.min.css";
 // import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap
 // import 'bootstrap-icons/font/bootstrap-icons.css'; // Import Bootstrap Icons
 import { Row, Col } from 'react-bootstrap';
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+// import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { useSearchParams } from "next/navigation";
-const FullPageComponent = () => {
+
+const Content = () => {
     const searchParams = useSearchParams();
     const id = searchParams.get("id");
+    // const id ="id";
+    console.log("id ==>", id)
     const [properties, setProperties] = useState([]);
     const [packagedetails, setpackagedetails] = useState([]);
     const [tourdetails, settourdetails] = useState([]);  // Changed to array initialization
@@ -80,6 +83,7 @@ const FullPageComponent = () => {
         setActiveTab(tabName);
     };
     return (
+
         <div className="container-fluid">
             {/* Fullscreen Hero Section */}
             <div
@@ -438,7 +442,14 @@ const FullPageComponent = () => {
                 </div>
             </div>
         </div>
+
     );
-};
+}
+
+const FullPageComponent = () => (
+    <Suspense fallback={<div>Loading...</div>}>
+        <Content />
+    </Suspense>
+);
 
 export default FullPageComponent;
