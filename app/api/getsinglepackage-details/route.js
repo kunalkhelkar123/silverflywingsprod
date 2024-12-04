@@ -14,36 +14,50 @@ export async function POST(req, resolve) {
         SELECT * FROM package_details_master WHERE package_id=?;
           `;
 
-          const SqlGetIouritlernary = `
+      const SqlGetIouritlernary = `
         SELECT * FROM tour_itlernary_master WHERE package_id=?;
           `;
-          const SqlGetHotel = `
+      const SqlGetHotel = `
           SELECT * FROM hotel_details_master WHERE package_id=?;
             `;
 
-            const SqlGetPricing = `
+      const SqlGetPricing = `
           SELECT * FROM package_prices_master WHERE package_id=?;
             `;
 
-            const result=[];
-            const [GetPackage] = await db.query(SqlGetPackage, id);
-            // console.log("GetPackage ",GetPackage )
-            result.push(GetPackage)
-            const [GetIouritlernary] = await db.query(SqlGetIouritlernary, id);
-            result.push(GetIouritlernary)
-            // console.log(" GetIouritlernary", GetIouritlernary)
-            const [GetHotel] = await db.query(SqlGetHotel, id);
-            result.push(GetHotel)
-            // console.log(" GetHotel",GetHotel )
-            const [GetPricing] = await db.query(SqlGetPricing, id);
-            result.push(GetPricing)
-            // console.log(" GetPricing", GetPricing)
-            console.log("result ==> ", result)
+      const SqlGetPaymentTerm = `
+        SELECT * FROM payment_terms_master;
+          `;
+      const SqlGetCancellationPolicy = `
+          SELECT * FROM cancellation_policy_master;
+            `;
+
+
+      const result = [];
+      const [GetPackage] = await db.query(SqlGetPackage, id);
+      // console.log("GetPackage ",GetPackage )
+      result.push(GetPackage)
+      const [GetIouritlernary] = await db.query(SqlGetIouritlernary, id);
+      result.push(GetIouritlernary)
+      // console.log(" GetIouritlernary", GetIouritlernary)
+      const [GetHotel] = await db.query(SqlGetHotel, id);
+      result.push(GetHotel)
+      // console.log(" GetHotel",GetHotel )
+      const [GetPricing] = await db.query(SqlGetPricing, id);
+      result.push(GetPricing)
+      // console.log(" GetPricing", GetPricing)
+      const [GetPaymentTerm] = await db.query(SqlGetPaymentTerm);
+      result.push(GetPaymentTerm)
+      // console.log(" GetPaymentTerm", GetPaymentTerm)
+      const [GetCancellationPolicy] = await db.query(SqlGetCancellationPolicy);
+      result.push(GetCancellationPolicy)
+      // console.log(" GetCancellationPolicy", GetCancellationPolicy)
+      console.log("result ==> ", result)
 
       // Return success response
       return new Response(
         JSON.stringify({
-          results: result,  
+          results: result,
           message: "Package data received"
         }),
         {

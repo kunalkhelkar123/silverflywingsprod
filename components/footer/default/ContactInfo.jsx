@@ -2,15 +2,15 @@ const ContactInfo = () => {
   const contactContent = [
     {
       id: 1,
-      title: "Toll Free Customer Care",
-      action: "tel:+(1) 123 456 7890",
-      text: "+(1) 123 456 7890",
+      title: "Call and WhatsApp No.",
+      action: "tel:+(91) 7972645071",
+      text: "+(91) 7972645071",
     },
     {
       id: 2,
-      title: "Need live support?",
-      action: "mailto:xyz@abc.com",
-      text: "hi@gotrip.com",
+      title: "E-mail",
+      action: "mailto:info@silverflywings.com",
+      text: "info@silverflywings.com",
     },
   ];
   return (

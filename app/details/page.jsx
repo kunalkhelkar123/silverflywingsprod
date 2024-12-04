@@ -18,6 +18,8 @@ const FullPageComponent = () => {
     const [tourdetails, settourdetails] = useState([]);  // Changed to array initialization
     const [hoteldetails, sethoteldetails] = useState([]);
     const [packagepricing, setpackagepricing] = useState([]);
+    const [paymentterms, setpaymentterms] = useState([]);
+    const [cancellationpolicies, setcancellationpolicies] = useState([]);
 
     useEffect(() => {
         const fetchPackageDetails = async () => {
@@ -32,23 +34,29 @@ const FullPageComponent = () => {
                     const result = await response.json();
 
                     console.log("result ==> ", result.results);
-                   
+
                     if (Array.isArray(result?.results)) {
                         const data = result.results;
 
-                        const [packagedetails1, tourdetails1, hoteldetails1, packagepricing1] = data;
+                        const [packagedetails1, tourdetails1, hoteldetails1, packagepricing1, paymentterms1, cancellationpolicies1] = data;
 
                         // Logging the details to ensure they are fetched correctly
                         console.log("packagedetails1", packagedetails1);
                         console.log("tourdetails1", tourdetails1);
                         console.log("hoteldetails1", hoteldetails1);
                         console.log("packagepricing1", packagepricing1);
+                        console.log("paymentterms1", paymentterms1);
+                        console.log("cancellationpolicies1", cancellationpolicies1);
+
 
                         // Setting the fetched details into the state
                         setpackagedetails(packagedetails1);
                         settourdetails(tourdetails1);
                         sethoteldetails(hoteldetails1);
                         setpackagepricing(packagepricing1);
+                        setpaymentterms(paymentterms1);
+                        setcancellationpolicies(cancellationpolicies1);
+
                     }
                 } catch (error) {
                     console.error("Error fetching package details:", error);
@@ -67,8 +75,8 @@ const FullPageComponent = () => {
         console.log("Updated packagepricing:", packagepricing);
 
 
-        console.log("packagedetails.package_name",packagedetails[0]?.package_name)
-    }, [packagedetails, tourdetails, hoteldetails, packagepricing]); 
+        console.log("packagedetails.package_name", packagedetails[0]?.package_name)
+    }, [packagedetails, tourdetails, hoteldetails, packagepricing]);
     ////////////////////////////////////////////////////////
     // State for managing active tabs
     const [activeTab, setActiveTab] = useState("Tour Itinerary");
@@ -222,37 +230,37 @@ const FullPageComponent = () => {
                                 <div className="accordion" id="itineraryAccordion">
                                     {/* Day 1 */}
                                     <div className="accordion" id="itineraryAccordion">
-  {tourdetails?.map((tour, index) => (
-    <div className="accordion-item mb-3" style={{ minHeight: "100px" }} key={index}>
-      <h2 className="accordion-header" id={`day${index + 1}Header`}>
-        <button
-          className="accordion-button"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target={`#day${index + 1}`}
-          aria-expanded={index === 0 ? "true" : "false"}
-          aria-controls={`day${index + 1}`}
-        >
-          {`Day ${index + 1}: ${tour.day_title}`}
-        </button>
-      </h2>
-      <div
-        id={`day${index + 1}`}
-        className={`accordion-collapse collapse ${index === 0 ? 'show' : ''}`}
-        aria-labelledby={`day${index + 1}Header`}
-      >
-        <div className="accordion-body" style={{ fontSize: "16px", color: "darkgrey" }}>
-          {tour.day_description}
-        </div>
-      </div>
-    </div>
-  ))}
-</div>
+                                        {tourdetails?.map((tour, index) => (
+                                            <div className="accordion-item mb-3" style={{ minHeight: "100px" }} key={index}>
+                                                <h2 className="accordion-header" id={`day${index + 1}Header`}>
+                                                    <button
+                                                        className="accordion-button"
+                                                        type="button"
+                                                        data-bs-toggle="collapse"
+                                                        data-bs-target={`#day${index + 1}`}
+                                                        aria-expanded={index === 0 ? "true" : "false"}
+                                                        aria-controls={`day${index + 1}`}
+                                                    >
+                                                        {`Day ${index + 1}: ${tour.day_title}`}
+                                                    </button>
+                                                </h2>
+                                                <div
+                                                    id={`day${index + 1}`}
+                                                    className={`accordion-collapse collapse ${index === 0 ? 'show' : ''}`}
+                                                    aria-labelledby={`day${index + 1}Header`}
+                                                >
+                                                    <div className="accordion-body" style={{ fontSize: "16px", color: "darkgrey" }}>
+                                                        {tour.day_description}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
 
                                 </div>
                             </div>
                         )}
-                      
+
 
 
 
@@ -293,95 +301,117 @@ const FullPageComponent = () => {
 
 
                         {activeTab === "Policy & Terms" && (
-                            <div>
+                            <><div>
 
-                                <h3>Policy and Terms</h3>
-                                <ol>
-                                    <li>
-                                        All rates are per person based on minimum two adults travelling together.
-                                        Final payments will be collected at the prevailing rate of exchange on the date of final
-                                        payment.
-                                    </li>
-                                    <li>High season surcharges will be applicable if any.</li>
-                                    <li>
-                                        All rates are subject to availability at the time of booking.</li>
-                                    <li>Rates are subject to change without prior notice, due to the cost change of hotel rates
-                                        in case of any event, like Trade Fair, Exhibition, important holidays and other major
-                                        events. etc.</li>
-                                    <li>Rates quoted are not applicable during trade fair periods.</li>
-                                    <li>If certain entrances are closed during certain periods, alternative entrances will be
-                                        provided.</li>
-                                    <li>Hotel check in is after 14:00 and checkout timing is before 12:00.</li>
+                                <h3>Payment Policies</h3>
 
-                                </ol>
+                                <table className="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Terms</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {paymentterms?.map((pricing, index) => (
+                                            <tr key={index}>
+                                                <td> {pricing.terms}</td>
+                                                <td> {pricing.description}</td>
 
-
-
-
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
 
 
                             </div>
+                                <div>
+
+                                    <h3>Cancellation Policies</h3>
+
+                                    <table className="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Terms</th>
+                                                <th>Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {cancellationpolicies?.map((pricing, index) => (
+                                                <tr key={index}>
+                                                    <td> {pricing.terms}</td>
+                                                    <td> {pricing.description}</td>
+
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+
+
+                                </div>
+                            </>
+
                         )}
 
 
                         {activeTab === "Pricing" && (
-                          <div>
-                          <h4>Pricing Details</h4>
-                          <table className="table table-bordered">
-                              <thead>
-                                  <tr>
-                                      <th>Category</th>
-                                      <th>Delux</th>
-                                      <th>Super Delux</th>
-                                      <th>Luxury</th>
+                            <div>
+                                <h4>Pricing Details</h4>
+                                <table className="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Category</th>
+                                            <th>Delux</th>
+                                            <th>Super Delux</th>
+                                            <th>Luxury</th>
 
-                                      
-                                  </tr>
-                              </thead>
-                              <tbody>
-                                  {packagepricing?.map((pricing, index) => (
-                                      <tr key={index}>
-                                          <td> {pricing.paxDetails}</td>
-                                          <td>INR  {pricing.delux}/-</td>
-                                          <td>INR  {pricing.super_delux}/-</td>
-                                          <td>INR  {pricing.luxury}/-</td>
-                                      </tr>
-                                  ))}
-                              </tbody>
-                          </table>
-                      </div>
-                      
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {packagepricing?.map((pricing, index) => (
+                                            <tr key={index}>
+                                                <td> {pricing.paxDetails}</td>
+                                                <td>INR  {pricing.delux}/-</td>
+                                                <td>INR  {pricing.super_delux}/-</td>
+                                                <td>INR  {pricing.luxury}/-</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+
                         )}
 
 
                         {activeTab === "Hotel Details" && (
-                           <div>
-                          <h4>Hotel Details</h4>
-                          <table className="table table-bordered">
-                              <thead>
-                                  <tr>
-                                      <th>Category</th>
-                                      <th>Delux</th>
-                                      <th>Super Delux</th>
-                                      <th>Luxury</th>
-                                      <th>Hotel Description</th>
-                                  </tr>
-                              </thead>
-                              <tbody>
-                                  {hoteldetails?.map((hotel, index) => (
-                                      <tr key={index}>
-                                          <td> {hotel.hotelCountry}</td>
-                                          <td> {hotel.delux}</td>
-                                          <td> {hotel.super_delux}</td>
-                                          <td>  {hotel.luxury}</td>
-                                          <td>  {hotel?.hotel_description ? hotel.hotel_description : "Description Not Available"}</td>
+                            <div>
+                                <h4>Hotel Details</h4>
+                                <table className="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Category</th>
+                                            <th>Delux</th>
+                                            <th>Super Delux</th>
+                                            <th>Luxury</th>
+                                            <th>Hotel Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {hoteldetails?.map((hotel, index) => (
+                                            <tr key={index}>
+                                                <td> {hotel.hotelCountry}</td>
+                                                <td> {hotel.delux}</td>
+                                                <td> {hotel.super_delux}</td>
+                                                <td>  {hotel.luxury}</td>
+                                                <td>  {hotel?.hotel_description ? hotel.hotel_description : "Description Not Available"}</td>
 
-                                      </tr>
-                                  ))}
-                              </tbody>
-                          </table>
-                       </div>
-                       
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+
                         )}
 
 

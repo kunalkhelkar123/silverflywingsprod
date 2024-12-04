@@ -13,7 +13,7 @@ const Block2 = () => {
       id: 1,
       icon: "/img/featureIcons/1/1.svg",
       title: "Best Price Guarantee",
-      text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
+      text: `Book with confidence! We guarantee the best price on all our tours. If you find a lower price elsewhere, we'll match it and give you an additional discount. Your dream vacation at the best value, always!.`,
     },
     {
       id: 2,

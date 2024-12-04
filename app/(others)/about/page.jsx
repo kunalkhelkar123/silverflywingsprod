@@ -98,7 +98,7 @@ const About = () => {
       </section>
       {/* End counter Section */}
 
-      <section className="layout-pt-lg layout-pb-lg">
+      {/* <section className="layout-pt-lg layout-pb-lg">
         <div className="container">
           <div className="row y-gap-20 justify-between items-end">
             <div className="col-auto">
@@ -110,17 +110,17 @@ const About = () => {
               </div>
             </div>
           </div>
-          {/* End .row */}
+       
 
           <div className=" pt-40 js-section-slider">
             <div className="item_gap-x30">
               <Team1 />
             </div>
           </div>
-          {/* End  js-section-slider */}
+      
         </div>
-        {/* End container */}
-      </section>
+ 
+      </section> */}
       {/* End team section */}
 
       <section className="section-bg layout-pt-lg layout-pb-lg">

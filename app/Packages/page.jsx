@@ -102,13 +102,17 @@ const App = () => {
                   <h6 className="mt-3">Starting From</h6>
                   <h5>INR:  {packages.packageprice} -/ Per Person</h5>
                   <div className="d-flex justify-content-between mt-3">
-                    <Button
+                  <Link href={"/contact"}>  <Button
                       variant="outline-primary"
                       size="sm"
-                      onClick={() => alert("Enquiry Clicked!")}
+                      // onClick={() => alert("Enquiry Clicked!")}
                     >
                       Enquire Now
-                    </Button>
+                    </Button> </Link>
+                  
+
+
+
                     <Link href={{ pathname: "/details", query: { id: `${packages.package_id}` } }} passHref>
                       <Button variant="danger" size="sm">
                         View Details

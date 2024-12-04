@@ -7,11 +7,48 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import { Scrollbar } from "swiper";
 import { destinations2 } from "../../data/desinations";
+import { useEffect, useState } from "react";
+
+
+
+
+
+
 
 const PopularDestinations = () => {
+
+  const [countries, setCountries] = useState([]);
+
+  useEffect(() => {
+    const fetchCountriesDetails = async () => {
+      try {
+        const response = await fetch("/api/getcountry", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status} ${response.statusText}`);
+        }
+
+        const result = await response.json();
+
+        if (Array.isArray(result?.results)) {
+          console.log("Countries ==> ", result.results);
+          setCountries(result.results);
+        } else {
+          console.warn("Unexpected response format:", result);
+        }
+      } catch (error) {
+        console.error("Error fetching package details:", error);
+      }
+    };
+
+    fetchCountriesDetails();
+  }, []);
   return (
     <>
-       <Swiper
+      <Swiper
         spaceBetween={30}
         className="overflow-visible"
         scrollbar={{
@@ -39,20 +76,20 @@ const PopularDestinations = () => {
             slidesPerView: 4,
           },
         }}
-      > 
-        {destinations2.map((item) => (
+      >
+        {countries.map((item) => (
           <SwiperSlide key={item.id}>
-          
-             <Link
+
+            <Link
               href="/Packages"
               className="citiesCard -type-1 d-block rounded-4"
               key={item.id}
-            > 
+            >
               <div className="citiesCard__image ratio ratio-3:4">
                 <Image
                   width={300}
                   height={400}
-                  src={item.img}
+                  src={`/images/sun.jpeg`}
                   alt="image"
                   className="js-lazy"
                 />
@@ -60,15 +97,15 @@ const PopularDestinations = () => {
               <div className="citiesCard__content d-flex flex-column justify-between text-center pt-30 pb-20 px-20">
                 <div className="citiesCard__bg" />
                 <div className="citiesCard__top">
-                  <div className="text-14 text-white">{item.hoverText}</div>
+                  <div className="text-14 text-white">{item.country}</div>
                 </div>
                 <div className="citiesCard__bottom">
                   <h4 className="text-26 md:text-20 lh-13 text-white mb-20">
-                    {item.city}
+                    {item.country}
                   </h4>
-                  <button className="button col-12 h-60 -blue-1 bg-white text-dark-1">
-                   Explore More
-                  </button>
+                  <Link href={{ pathname: "/Packages", query: { country: `${item.country}` } }}><button className="button col-12 h-60 -blue-1 bg-white text-dark-1">
+                    Explore More
+                  </button></Link>
                 </div>
               </div>
             </Link>
@@ -87,8 +124,8 @@ const PopularDestinations = () => {
       </div>
 
 
-      
-      
+
+
     </>
   );
 };

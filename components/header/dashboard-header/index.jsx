@@ -17,7 +17,7 @@ const HeaderDashBoard = () => {
 
   const changeBackground = () => {
     if (window.scrollY >= 10) {
-      setNavbar(true);
+      // setNavbar(true);
     } else {
       setNavbar(false);
     }

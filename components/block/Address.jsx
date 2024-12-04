@@ -11,21 +11,21 @@ const Address = () => {
     {
       id: 2,
       colClass: "col-auto",
-      title: "Toll Free Customer Care",
+      title: "Contact-Us",
       content: (
         <>
-          <a href="tel:+4733378901">+47 333 78 901</a>
+          <a href="tel:+917972645071">+91 7972645071</a>
         </>
       ),
     },
     {
       id: 3,
       colClass: "col-auto",
-      title: "Need live support?",
+      title: "Email",
       content: (
         <>
           {" "}
-          <a href="mailto:i@gotrip.com">hi@gotrip.com</a>
+          <a href="mailto:info@silverflywings.com">info@silverflywings.com</a>
         </>
       ),
     },

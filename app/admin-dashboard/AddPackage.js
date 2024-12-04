@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaSuitcase, FaRoute, FaHotel, FaMoneyBillAlt } from "react-icons/fa";
-import { forEach } from "@/data/activity";
+// import { forEach } from "@/data/activity";
 
 const PackageForm = () => {
     const [formData, setFormData] = useState({
@@ -213,8 +213,12 @@ const PackageForm = () => {
                 squarePhoto: formData.description,
                 packageprice: formData.packageprice
             };
+            if(!packageinfo )
+            {
+                
             setPackageinfo([...packageinfo, packageinfo]);
 
+            }
         }
         else {
             console.log("hello")
@@ -245,6 +249,7 @@ const PackageForm = () => {
     const handleNext = () => {
     };
     const handleNexthotel = () => {
+      setActiveTab(2)
         handleHotel();
     }
     const handleNextTour = () => {
@@ -351,25 +356,27 @@ const PackageForm = () => {
 
     // You can implement navigation to the next tab or other logic here
     return (
-        <div className="container-fluid p-0">
-            <div className="row">
+        <div className="container-fluid p-0" style={{marginTop:"-50px", marginLeft:"-50px"}}>
+            <div className="row" style={{ }}>
                 <div className="col-md-12">
                     <div className="card mt-5">
-                        <div className="card-header bg-light">
+                        <div className="card-header bg-light" >
                             {/* start */}
 
                             <div
                                 className="tabs-header d-flex justify-content-around bg-light p-3 mb-4"
-                                style={{ borderRadius: "5px" }}
+                                style={{ borderRadius: "8px" }}
                             >
                                 {tabs.map((tab, index) => (
                                     <div
                                         key={tab.id}
                                         className={`tab-item px-3 text-center ${activeTab === index ? "active-tab" : ""
                                             }`}
-                                        onClick={() => setActiveTab(index)}
+                                        // onClick={() => setActiveTab(index)}
                                         style={{
+                                          
                                             cursor: "pointer",
+                                            width: "80vw", marginLeft:"-17px" ,  
                                             fontWeight: activeTab === index ? "bold" : "normal",
                                             color: activeTab === index ? "#007bff" : "#000",
                                             borderBottom:
@@ -386,7 +393,7 @@ const PackageForm = () => {
                                 {/* </div> */}
 
                                 {/* Content Section */}
-                                <div className="tab-content">
+                                {/* <div className="tab-content">
                                     {activeTab === 0 && (
                                         <div>Package Details Content Goes Here...</div>
                                     )}
@@ -399,13 +406,13 @@ const PackageForm = () => {
                                     {activeTab === 3 && (
                                         <div>Package Price Content Goes Here...</div>
                                     )}
-                                </div>
+                                </div> */}
                             </div>
 
                             {/* end */}
 
                             {/* <h2 className="text-center mb-4">Package Form</h2> */}
-                            <div className="card p-4" style={{ width: "90vw" }}>
+                            <div className="card p-4" style={{ width: "80vw", marginLeft:"17px"  ,marginRight:"-90px" ,}}>
                                 {/* Tabs Section */}
                                 <ul className="nav nav-tabs mb-3">
                                     <li className="nav-item">
@@ -497,6 +504,7 @@ const PackageForm = () => {
                                                     })
                                                 }
                                                 placeholder="Package Property Name"
+                                                style={{width:"1000px", height:"60px" , border:"2px grey solid"}}
                                             />
                                         </div>
 
@@ -518,6 +526,8 @@ const PackageForm = () => {
                                                     })
                                                 }
                                                 placeholder="Enter duration (e.g., 4 Days)"
+                                                style={{width:"1000px", height:"60px" , border:"2px grey solid"}}
+
                                             />
                                             {formErrors.tourDuration && (
                                                 <div className="invalid-feedback">
@@ -542,8 +552,11 @@ const PackageForm = () => {
                                                         ...formData,
                                                         countries: e.target.value,
                                                     })
+
                                                 }
                                                 placeholder="Enter duration (e.g., 4 Days)"
+                                                style={{width:"1000px", height:"60px" , border:"2px grey solid"}}
+
                                             />
                                             {formErrors.countries && (
                                                 <div className="invalid-feedback">
@@ -557,7 +570,7 @@ const PackageForm = () => {
                                             <label htmlFor="cities" className="form-label">
                                                 Cities
                                             </label>
-                                            <select
+                                            {/* <select
                                                 id="cities"
                                                 className={`form-select ${formErrors.cities ? "is-invalid" : ""
                                                     }`}
@@ -565,6 +578,8 @@ const PackageForm = () => {
                                                 onChange={(e) =>
                                                     setFormData({ ...formData, cities: e.target.value })
                                                 }
+                                                style={{width:"1000px", height:"60px" , border:"2px grey solid"}}
+
                                             >
                                                 <option value="">Select City</option>
                                                 {citiesOptions.map((city, index) => (
@@ -572,7 +587,24 @@ const PackageForm = () => {
                                                         {city}
                                                     </option>
                                                 ))}
-                                            </select>
+                                            </select> */}
+                                            <input
+                                                type="text"
+                                                id="countries"
+                                                className={`form-control ${formErrors.cities ? "is-invalid" : ""
+                                                    }`}
+                                                value={formData.cities}
+                                                onChange={(e) =>
+                                                    setFormData({
+                                                        ...formData,
+                                                        cities: e.target.value,
+                                                    })
+
+                                                }
+                                                placeholder="Cities"
+                                                style={{width:"1000px", height:"60px" ,  border:"2px grey solid"}}
+
+                                            />
                                             {formErrors.cities && (
                                                 <div className="invalid-feedback">
                                                     {formErrors.cities}
@@ -596,6 +628,8 @@ const PackageForm = () => {
                                                         packageprice: e.target.value,
                                                     })
                                                 }
+                                                style={{width:"1000px", height:"60px" , border:"2px grey solid"}}
+
                                                 placeholder="Enter duration (e.g., 4 Days)"
                                             />
                                             {formErrors.packageprice && (
@@ -611,6 +645,8 @@ const PackageForm = () => {
                                                 Upload Photo
                                             </label>
                                             <input
+                                                style={{width:"300px", height:"100px" , border:"2px grey solid"}}
+
                                                 type="file"
                                                 id="uploadPhoto"
                                                 className={`form-control ${formErrors.uploadPhoto ? "is-invalid" : ""
@@ -630,6 +666,8 @@ const PackageForm = () => {
                                                 Square Photo
                                             </label>
                                             <input
+                                                style={{width:"300px", height:"100px" , border:"2px grey solid"}}
+
                                                 type="file"
                                                 id="squarePhoto"
                                                 className={`form-control ${formErrors.squarePhoto ? "is-invalid" : ""
@@ -1108,3 +1146,4 @@ const PackageForm = () => {
 };
 
 export default PackageForm;
+

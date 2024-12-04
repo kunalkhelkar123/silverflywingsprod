@@ -8,7 +8,7 @@ export const blogItems = [
   },
   {
     name: "Blog List V2",
-    routePath: "/blog-list-v2",
+    routePath: "/blogs",
   },
   {
     name: "Blog Single",
@@ -28,10 +28,10 @@ export const pageItems = [
   //   name: "Become Expert",
   //   routePath: "/become-expert",
   // },
-  {
-    name: "Help Center",
-    routePath: "/help-center",
-  },
+  // {
+  //   name: "Help Center",
+  //   routePath: "/help-center",
+  // },
   // {
   //   name: "Login",
   //   routePath: "/login",

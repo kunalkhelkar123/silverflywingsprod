@@ -6,7 +6,7 @@ import WhyChoose from "@/components/block/BlockGuide";
 import Address from "@/components/block/Address";
 import Social from "@/components/common/social/Social";
 import ContactForm from "@/components/common/ContactForm";
-import LocationTopBar from "@/components/common/LocationTopBar";
+// import LocationTopBar from "@/components/common/LocationTopBar";
 
 export const metadata = {
   title: "Contact || GoTrip - Travel & Tour React NextJS Template",
@@ -16,17 +16,14 @@ export const metadata = {
 const Contact = () => {
   return (
     <>
-      {/* End Page Title */}
-
       <div className="header-margin"></div>
       {/* header top margin */}
 
       <DefaultHeader />
       {/* End Header 1 */}
 
-      <LocationTopBar />
+      {/* <LocationTopBar /> */}
       {/* End location top bar section */}
-
       <div className="map-outer">
         <div className="map-canvas">
           <iframe
@@ -37,7 +34,7 @@ const Contact = () => {
       </div>
       {/* End map section */}
 
-      <section className="relative container">
+      <section className="relative container" style={{ marginTop: "-145px" }}>
         <div className="row justify-end">
           <div className="col-xl-5 col-lg-7">
             <div className="map-form px-40 pt-40 pb-50 lg:px-30 lg:py-30 md:px-24 md:py-24 bg-white rounded-4 shadow-4">

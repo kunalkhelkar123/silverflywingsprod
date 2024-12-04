@@ -70,7 +70,7 @@ const MainMenu = ({ style = "" }) => {
         >
           <a href="#">
           
-            <Link href= "/blog-list-v2">
+            <Link href= "/blogs">
             <span className="mr-10">Blog</span></Link>
             {/* <i className="icon icon-chevron-sm-down" /> */}
           </a>

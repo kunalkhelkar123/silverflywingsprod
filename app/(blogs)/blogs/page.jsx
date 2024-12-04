@@ -1,7 +1,6 @@
 import React from "react";
 import CallToActions from "@/components/common/CallToActions";
 import DefaultHeader from "@/components/header/default-header";
-import LocationTopBar from "@/components/common/LocationTopBar";
 import DefaultFooter from "@/components/footer/default";
 import Blog1 from "@/components/blog/Blog1";
 
@@ -19,7 +18,7 @@ const BlogListV1 = () => {
       <DefaultHeader />
       {/* End Header 1 */}
 
-      <LocationTopBar />
+      {/* <LocationTopBar /> */}
       {/* End location top bar section */}
 
       <section className="layout-pt-md layout-pb-lg">
