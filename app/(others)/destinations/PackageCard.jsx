@@ -2,7 +2,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import { destinations11 } from "@/data/desinations";
- import Packages from "../../Packages/page"
+ import Packages from "../../(Packages)/Packages/page"
 
 import Link from "next/link";
 import Image from "next/image";

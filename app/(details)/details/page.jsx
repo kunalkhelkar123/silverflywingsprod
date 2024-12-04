@@ -6,13 +6,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Row, Col } from 'react-bootstrap';
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { useSearchParams } from "next/navigation";
-
 const FullPageComponent = () => {
-
-
     const searchParams = useSearchParams();
     const id = searchParams.get("id");
-
     const [properties, setProperties] = useState([]);
     const [packagedetails, setpackagedetails] = useState([]);
     const [tourdetails, settourdetails] = useState([]);  // Changed to array initialization
@@ -41,12 +37,12 @@ const FullPageComponent = () => {
                         const [packagedetails1, tourdetails1, hoteldetails1, packagepricing1, paymentterms1, cancellationpolicies1] = data;
 
                         // Logging the details to ensure they are fetched correctly
-                        console.log("packagedetails1", packagedetails1);
-                        console.log("tourdetails1", tourdetails1);
-                        console.log("hoteldetails1", hoteldetails1);
-                        console.log("packagepricing1", packagepricing1);
-                        console.log("paymentterms1", paymentterms1);
-                        console.log("cancellationpolicies1", cancellationpolicies1);
+                        // console.log("packagedetails1", packagedetails1);
+                        // console.log("tourdetails1", tourdetails1);
+                        // console.log("hoteldetails1", hoteldetails1);
+                        // console.log("packagepricing1", packagepricing1);
+                        // console.log("paymentterms1", paymentterms1);
+                        // console.log("cancellationpolicies1", cancellationpolicies1);
 
 
                         // Setting the fetched details into the state
@@ -69,13 +65,11 @@ const FullPageComponent = () => {
 
     // Logging the state after it is updated
     useEffect(() => {
-        console.log("Updated packagedetails:", packagedetails);
-        console.log("Updated tourdetails:", tourdetails);
-        console.log("Updated hoteldetails:", hoteldetails);
-        console.log("Updated packagepricing:", packagepricing);
-
-
-        console.log("packagedetails.package_name", packagedetails[0]?.package_name)
+        // console.log("Updated packagedetails:", packagedetails);
+        // console.log("Updated tourdetails:", tourdetails);
+        // console.log("Updated hoteldetails:", hoteldetails);
+        // console.log("Updated packagepricing:", packagepricing);
+        // console.log("packagedetails.package_name", packagedetails[0]?.package_name)
     }, [packagedetails, tourdetails, hoteldetails, packagepricing]);
     ////////////////////////////////////////////////////////
     // State for managing active tabs
@@ -85,12 +79,6 @@ const FullPageComponent = () => {
     const handleTabClick = (tabName) => {
         setActiveTab(tabName);
     };
-
-
-
-
-
-
     return (
         <div className="container-fluid">
             {/* Fullscreen Hero Section */}
