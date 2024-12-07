@@ -50,7 +50,7 @@ const PackageCard = () => {
       key={item.id}
     >
       <span
-        // href="/packages"
+        // href="/Packages"
         className="citiesCard -type-1 d-block rounded-4 h-100 d-flex flex-wrap"
       >
         <div className="citiesCard__image ratio ratio-3:4">

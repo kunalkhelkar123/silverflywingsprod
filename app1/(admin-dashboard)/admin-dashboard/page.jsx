@@ -162,7 +162,7 @@
 //                 pricedelux: formData.pricedelux,
 //                 pricesuperdelux: formData.pricesuperdelux1,
 //                 priceluxury: formData.priceluxury,
-
+                
 //             };
 //             setpackagepriceDetails([...packagepriceDetails, newpackageprice]);
 //             console.log("newpackageprice", newpackageprice);
@@ -172,7 +172,7 @@
 //             formData.pricedelux = "";
 //             formData.pricesuperdelux1 = "";
 //             formData.priceluxury = "";
-
+            
 //         }
 //         else {
 //             console.log("error okokok")
@@ -215,7 +215,7 @@
 //             };
 //             if(!packageinfo )
 //             {
-
+                
 //             setPackageinfo([...packageinfo, packageinfo]);
 
 //             }
@@ -583,7 +583,7 @@
 //                                                 </div>
 //                                             )}
 //                                         </div>
-
+                                        
 //                                         <div className="mb-3">
 //                                             <label htmlFor="countries" className="form-label">
 //                                                Package price per person
@@ -1121,55 +1121,36 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-
 // Dynamically import AddPackage
 const AddPackage = dynamic(() => import("./AddPackage")); // Update the path if needed
 export default function Home() {
   const [showAddPackage, setShowAddPackage] = useState(false);
-  const [propertycount, setPropertycount] = useState(0);
-  const router = useRouter();
-
-
-
-  useEffect(() => {
-    const token = sessionStorage.getItem("token");
-    // const token =""
-    console.log("Token retrieved:", token?token:"null");
-
-    // Check if the token exists and is not undefined
-    if (!token) {
-      console.warn("No token found. Redirecting to login...");
-      router.push("/login"); // Redirect to login if token is not found
-    }
-  }, []);
-
-
+  const [propertycount, setPropertycount]= useState(0);
 
   useEffect(() => {
     const fetchPackageCount = async () => {
-      try {
-        const response = await fetch("/api/gettotalpackagecount", {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-        });
-        const result = await response.json();
-        console.log("result ==> ", result.results);
-        if (Array.isArray(result?.results)) {
-          const data = result.results;
-
-          const [propertycount] = data;
-          console.log("propertycount", propertycount["COUNT(package_id)"]);
-          setPropertycount(propertycount["COUNT(package_id)"])
-        }
-      } catch (error) {
-        console.error("Error fetching package details:", error);
-      }
-
+            try {
+                const response = await fetch("/api/gettotalpackagecount", {
+                    method: "GET",
+                    headers: { "Content-Type": "application/json" },  
+                });
+                const result = await response.json();
+                console.log("result ==> ", result.results);
+                if (Array.isArray(result?.results)) {
+                      const data = result.results;
+  
+                      const [propertycount] = data;
+                      console.log("propertycount", propertycount["COUNT(package_id)"]);
+                      setPropertycount(propertycount["COUNT(package_id)"])
+                }  
+            } catch (error) {
+                console.error("Error fetching package details:", error);
+            }
+        
     };
 
     fetchPackageCount();
-  });
+});
 
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", backgroundColor: "#f8f9fa" }}>
@@ -1189,14 +1170,14 @@ export default function Home() {
           }}
         >
           <div style={{ display: "flex", alignItems: "center" }}>
-            <Image
-              width={100}
-              height={100}
-              src="/img/logo/logo.PNG"
-              alt="image"
-              className=" rounded-2 object-cover"
-            />
-            <span style={{ fontWeight: "bold", fontSize: "18px", marginLeft: "15px" }}>Silver Flywings</span>
+          <Image
+                    width={100}
+                    height={100}
+                    src="/img/logo/logo.PNG"
+                    alt="image"
+                    className=" rounded-2 object-cover"
+                  />
+            <span style={{ fontWeight: "bold", fontSize: "18px" ,marginLeft:"15px"}}>Silver Flywings</span>
           </div>
           <nav>
             <a href="#" style={{ marginRight: "12px", color: "white", textDecoration: "none" }}>
@@ -1303,7 +1284,7 @@ export default function Home() {
               backgroundColor: "white",
               borderLeft: "1px solid #dee2e6",
               boxShadow: "0px 4px 8px rgba(0,0,0,0.1)",
-
+              
             }}
           >
             <AddPackage />

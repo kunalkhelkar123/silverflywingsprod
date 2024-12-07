@@ -481,305 +481,369 @@ const PackageForm = () => {
 
                                 {/* Package Details Tab */}
                                 {activeTab === "package-details" && (
-                                    <div className="container">
-                                    <h4 className="mb-4 text-center">Package Details</h4>
-                                  
-                                    {/* Package Property Name */}
-                                    <div className="mb-3">
-                                      <label htmlFor="packagePropertyName" className="form-label">
-                                        Package Property Name
-                                      </label>
-                                      <input
-                                        type="text"
-                                        id="packagePropertyName"
-                                        className={`form-control ${formErrors.packagePropertyName ? "is-invalid" : ""}`}
-                                        value={formData.packagePropertyName}
-                                        onChange={(e) =>
-                                          setFormData({
-                                            ...formData,
-                                            packagePropertyName: e.target.value,
-                                          })
-                                        }
-                                        placeholder="Enter the package property name"
-                                      />
-                                    </div>
-                                  
-                                    {/* Tour Duration */}
-                                    <div className="mb-3">
-                                      <label htmlFor="tourDuration" className="form-label">
-                                        Tour Duration
-                                      </label>
-                                      <input
-                                        type="text"
-                                        id="tourDuration"
-                                        className={`form-control ${formErrors.tourDuration ? "is-invalid" : ""}`}
-                                        value={formData.tourDuration}
-                                        onChange={(e) =>
-                                          setFormData({
-                                            ...formData,
-                                            tourDuration: e.target.value,
-                                          })
-                                        }
-                                        placeholder="Enter duration (e.g., 4 Days)"
-                                      />
-                                      {formErrors.tourDuration && (
-                                        <div className="invalid-feedback">{formErrors.tourDuration}</div>
-                                      )}
-                                    </div>
-                                  
-                                    {/* Countries */}
-                                    <div className="mb-3">
-                                      <label htmlFor="countries" className="form-label">
-                                        Countries
-                                      </label>
-                                      <input
-                                        type="text"
-                                        id="countries"
-                                        className={`form-control ${formErrors.countries ? "is-invalid" : ""}`}
-                                        value={formData.countries}
-                                        onChange={(e) =>
-                                          setFormData({
-                                            ...formData,
-                                            countries: e.target.value,
-                                          })
-                                        }
-                                        placeholder="Enter countries"
-                                      />
-                                      {formErrors.countries && (
-                                        <div className="invalid-feedback">{formErrors.countries}</div>
-                                      )}
-                                    </div>
-                                  
-                                    {/* Cities */}
-                                    <div className="mb-3">
-                                      <label htmlFor="cities" className="form-label">
-                                        Cities
-                                      </label>
-                                      <input
-                                        type="text"
-                                        id="cities"
-                                        className={`form-control ${formErrors.cities ? "is-invalid" : ""}`}
-                                        value={formData.cities}
-                                        onChange={(e) =>
-                                          setFormData({
-                                            ...formData,
-                                            cities: e.target.value,
-                                          })
-                                        }
-                                        placeholder="Enter cities"
-                                      />
-                                      {formErrors.cities && (
-                                        <div className="invalid-feedback">{formErrors.cities}</div>
-                                      )}
-                                    </div>
-                                  
-                                    {/* Package Price Per Person */}
-                                    <div className="mb-3">
-                                      <label htmlFor="packagePrice" className="form-label">
-                                        Package Price Per Person
-                                      </label>
-                                      <input
-                                        type="text"
-                                        id="packagePrice"
-                                        className={`form-control ${formErrors.packageprice ? "is-invalid" : ""}`}
-                                        value={formData.packageprice}
-                                        onChange={(e) =>
-                                          setFormData({
-                                            ...formData,
-                                            packageprice: e.target.value,
-                                          })
-                                        }
-                                        placeholder="Enter package price per person"
-                                      />
-                                      {formErrors.packageprice && (
-                                        <div className="invalid-feedback">{formErrors.packageprice}</div>
-                                      )}
-                                    </div>
-                                  
-                                    {/* Upload Photo */}
-                                    <div className="mb-3">
-                                      <label htmlFor="uploadPhoto" className="form-label">
-                                        Upload Photo
-                                      </label>
-                                      <input
-                                        type="file"
-                                        id="uploadPhoto"
-                                        className={`form-control ${formErrors.uploadPhoto ? "is-invalid" : ""}`}
-                                        onChange={(e) => handleFileUpload(e, "uploadPhoto")}
-                                      />
-                                      {formErrors.uploadPhoto && (
-                                        <div className="invalid-feedback">{formErrors.uploadPhoto}</div>
-                                      )}
-                                    </div>
-                                  
-                                    {/* Square Photo */}
-                                    <div className="mb-3">
-                                      <label htmlFor="squarePhoto" className="form-label">
-                                        Square Photo
-                                      </label>
-                                      <input
-                                        type="file"
-                                        id="squarePhoto"
-                                        className={`form-control ${formErrors.squarePhoto ? "is-invalid" : ""}`}
-                                        onChange={(e) => handleFileUpload(e, "squarePhoto")}
-                                      />
-                                      {formErrors.squarePhoto && (
-                                        <div className="invalid-feedback">{formErrors.squarePhoto}</div>
-                                      )}
-                                    </div>
-                                  
-                                    {/* Buttons */}
-                                    <div className="d-flex justify-content-end gap-3">
-                                      {activeTab === "package-details" && (
-                                        <button
-                                          className="btn btn-primary"
-                                          onClick={() => {
-                                            handleNext();
-                                            setActiveTab("tour-itineraries"); // Navigate to next tab
-                                          }}
+                                    <div>
+                                        <h4>Package Details</h4>
+                                        {/* Package Property Name */}
+                                        <div className="mb-3">
+                                            <label
+                                                htmlFor="packagePropertyName"
+                                                className="form-label"
+                                            >
+                                                Package Property Name
+                                            </label>
+                                            <input
+                                                type="text"
+                                                id="packagePropertyName"
+                                                className={`form-control ${formErrors.packagePropertyName ? "is-invalid" : ""
+                                                    }`}
+                                                value={formData.packagePropertyName}
+                                                onChange={(e) =>
+                                                    setFormData({
+                                                        ...formData,
+                                                        packagePropertyName: e.target.value,
+                                                    })
+                                                }
+                                                placeholder="Package Property Name"
+                                                style={{width:"1000px", height:"60px" , border:"2px grey solid"}}
+                                            />
+                                        </div>
+
+                                        {/* Tour Duration */}
+                                        <div className="mb-3">
+                                            <label htmlFor="tourDuration" className="form-label">
+                                                Tour Duration
+                                            </label>
+                                            <input
+                                                type="text"
+                                                id="tourDuration"
+                                                className={`form-control ${formErrors.tourDuration ? "is-invalid" : ""
+                                                    }`}
+                                                value={formData.tourDuration}
+                                                onChange={(e) =>
+                                                    setFormData({
+                                                        ...formData,
+                                                        tourDuration: e.target.value,
+                                                    })
+                                                }
+                                                placeholder="Enter duration (e.g., 4 Days)"
+                                                style={{width:"1000px", height:"60px" , border:"2px grey solid"}}
+
+                                            />
+                                            {formErrors.tourDuration && (
+                                                <div className="invalid-feedback">
+                                                    {formErrors.tourDuration}
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* Countries */}
+                                        <div className="mb-3">
+                                            <label htmlFor="countries" className="form-label">
+                                                Countries
+                                            </label>
+                                            <input
+                                                type="text"
+                                                id="countries"
+                                                className={`form-control ${formErrors.countries ? "is-invalid" : ""
+                                                    }`}
+                                                value={formData.countries}
+                                                onChange={(e) =>
+                                                    setFormData({
+                                                        ...formData,
+                                                        countries: e.target.value,
+                                                    })
+
+                                                }
+                                                placeholder="Enter duration (e.g., 4 Days)"
+                                                style={{width:"1000px", height:"60px" , border:"2px grey solid"}}
+
+                                            />
+                                            {formErrors.countries && (
+                                                <div className="invalid-feedback">
+                                                    {formErrors.countries}
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* Cities */}
+                                        <div className="mb-3">
+                                            <label htmlFor="cities" className="form-label">
+                                                Cities
+                                            </label>
+                                            {/* <select
+                                                id="cities"
+                                                className={`form-select ${formErrors.cities ? "is-invalid" : ""
+                                                    }`}
+                                                value={formData.cities}
+                                                onChange={(e) =>
+                                                    setFormData({ ...formData, cities: e.target.value })
+                                                }
+                                                style={{width:"1000px", height:"60px" , border:"2px grey solid"}}
+
+                                            >
+                                                <option value="">Select City</option>
+                                                {citiesOptions.map((city, index) => (
+                                                    <option key={index} value={city}>
+                                                        {city}
+                                                    </option>
+                                                ))}
+                                            </select> */}
+                                            <input
+                                                type="text"
+                                                id="countries"
+                                                className={`form-control ${formErrors.cities ? "is-invalid" : ""
+                                                    }`}
+                                                value={formData.cities}
+                                                onChange={(e) =>
+                                                    setFormData({
+                                                        ...formData,
+                                                        cities: e.target.value,
+                                                    })
+
+                                                }
+                                                placeholder="Cities"
+                                                style={{width:"1000px", height:"60px" ,  border:"2px grey solid"}}
+
+                                            />
+                                            {formErrors.cities && (
+                                                <div className="invalid-feedback">
+                                                    {formErrors.cities}
+                                                </div>
+                                            )}
+                                        </div>
+                                        
+                                        <div className="mb-3">
+                                            <label htmlFor="countries" className="form-label">
+                                               Package price per person
+                                            </label>
+                                            <input
+                                                type="text"
+                                                id="countries"
+                                                className={`form-control ${formErrors.packageprice ? "is-invalid" : ""
+                                                    }`}
+                                                value={formData.packageprice}
+                                                onChange={(e) =>
+                                                    setFormData({
+                                                        ...formData,
+                                                        packageprice: e.target.value,
+                                                    })
+                                                }
+                                                style={{width:"1000px", height:"60px" , border:"2px grey solid"}}
+
+                                                placeholder="Enter duration (e.g., 4 Days)"
+                                            />
+                                            {formErrors.packageprice && (
+                                                <div className="invalid-feedback">
+                                                    {formErrors.packageprice}
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* Upload Photo */}
+                                        <div className="mb-3">
+                                            <label htmlFor="uploadPhoto" className="form-label">
+                                                Upload Photo
+                                            </label>
+                                            <input
+                                                style={{width:"300px", height:"100px" , border:"2px grey solid"}}
+
+                                                type="file"
+                                                id="uploadPhoto"
+                                                className={`form-control ${formErrors.uploadPhoto ? "is-invalid" : ""
+                                                    }`}
+                                                onChange={(e) => handleFileUpload(e, "uploadPhoto")}
+                                            />
+                                            {formErrors.uploadPhoto && (
+                                                <div className="invalid-feedback">
+                                                    {formErrors.uploadPhoto}
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* Square Photo */}
+                                        <div className="mb-3">
+                                            <label htmlFor="squarePhoto" className="form-label">
+                                                Square Photo
+                                            </label>
+                                            <input
+                                                style={{width:"300px", height:"100px" , border:"2px grey solid"}}
+
+                                                type="file"
+                                                id="squarePhoto"
+                                                className={`form-control ${formErrors.squarePhoto ? "is-invalid" : ""
+                                                    }`}
+                                                onChange={(e) => handleFileUpload(e, "squarePhoto")}
+                                            />
+                                            {formErrors.squarePhoto && (
+                                                <div className="invalid-feedback">
+                                                    {formErrors.squarePhoto}
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* Submit Button */}
+                                        <div
+                                            className="div-btn btn-primary"
+                                            style={{ display: "flex", gap: "18px" }}
                                         >
-                                          Next
-                                        </button>
-                                      )}
-                                      <button className="btn btn-secondary" onClick={handleReset}>
-                                        Reset
-                                      </button>
+                                            {/* <button
+                                                className="btn btn-primary"
+                                                onClick={handleSubmit}
+                                            >
+                                                Submit
+                                            </button> */}
+                                            {activeTab === "package-details" && (
+                                                <button
+                                                    className="btn btn-primary"
+                                                    onClick={() => {
+                                                        handleNext();
+                                                        setActiveTab("tour-itineraries"); // Change to the next tab
+                                                    }}
+                                                >
+                                                    Next
+                                                </button>
+                                            )}
+                                            <button
+                                                className="btn btn-secondary ms-2"
+                                                onClick={handleReset}
+                                            >
+                                                Reset
+                                            </button>
+                                        </div>
                                     </div>
-                                  </div>
-                                  
                                 )}
 
                                 {/* Tour Itineraries Tab */}
 
                                 {activeTab === "tour-itineraries" && (
-                               <div className="container">
-                               <h4 className="mb-4 text-center">Tour Itineraries</h4>
-                             
-                               {/* Day */}
-                               <div className="mb-3">
-                                 <label htmlFor="day" className="form-label">
-                                   Day
-                                 </label>
-                                 <input
-                                   type="text"
-                                   id="day"
-                                   className="form-control"
-                                   value={formData.day}
-                                   onChange={(e) => setFormData({ ...formData, day: e.target.value })}
-                                   placeholder="Enter day (e.g., Day 1)"
-                                 />
-                               </div>
-                             
-                               {/* Heading */}
-                               <div className="mb-3">
-                                 <label htmlFor="head" className="form-label">
-                                   Heading
-                                 </label>
-                                 <input
-                                   type="text"
-                                   id="head"
-                                   className="form-control"
-                                   value={formData.head}
-                                   onChange={(e) => setFormData({ ...formData, head: e.target.value })}
-                                   placeholder="Enter heading"
-                                 />
-                               </div>
-                             
-                               {/* Description */}
-                               <div className="mb-3">
-                                 <label htmlFor="description" className="form-label">
-                                   Description
-                                 </label>
-                                 <textarea
-                                   id="description"
-                                   className="form-control"
-                                   rows="2"
-                                   value={formData.description}
-                                   onChange={(e) =>
-                                     setFormData({ ...formData, description: e.target.value })
-                                   }
-                                   placeholder="Enter description"
-                                 ></textarea>
-                               </div>
-                             
-                               {/* Notes */}
-                               <div className="mb-3">
-                                 <label htmlFor="notes" className="form-label">
-                                   Notes
-                                 </label>
-                                 <input
-                                   type="text"
-                                   id="notes"
-                                   className="form-control"
-                                   value={formData.notes}
-                                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                                   placeholder="Enter additional notes"
-                                 />
-                               </div>
-                             
-                               {/* Itinerary Table */}
-                               <div className="mt-4">
-                                 <h5 className="text-center mb-3">Itinerary Details</h5>
-                                 <table className="table table-striped table-bordered text-center">
-                                   <thead className="table-dark">
-                                     <tr>
-                                       <th>Day</th>
-                                       <th>Heading</th>
-                                       <th>Description</th>
-                                       <th>Notes</th>
-                                     </tr>
-                                   </thead>
-                                   <tbody>
-                                     {itineraries.length > 0 ? (
-                                       itineraries.map((itinerary, index) => (
-                                         <tr key={index}>
-                                           <td>{itinerary.day}</td>
-                                           <td>{itinerary.head}</td>
-                                           <td>{itinerary.description}</td>
-                                           <td>{itinerary.notes}</td>
-                                         </tr>
-                                       ))
-                                     ) : (
-                                       <tr>
-                                         <td colSpan="4">No itineraries added yet</td>
-                                       </tr>
-                                     )}
-                                   </tbody>
-                                 </table>
-                               </div>
-                             
-                               {/* Buttons */}
-                               <div className="d-flex justify-content-between mt-4">
-                                 <button className="btn btn-secondary" onClick={handleSubmit}>
-                                   Add Day
-                                 </button>
-                                 <div className="d-flex gap-3">
-                                   {activeTab === "tour-itineraries" && (
-                                     <>
-                                       <button
-                                         className="btn btn-primary"
-                                         onClick={() => {
-                                           handleNextTour();
-                                           setActiveTab("package-details");
-                                         }}
-                                       >
-                                         Previous
-                                       </button>
-                                       <button
-                                         className="btn btn-primary"
-                                         onClick={() => {
-                                           handleNextTour();
-                                           setActiveTab("hotel-details");
-                                         }}
-                                       >
-                                         Next
-                                       </button>
-                                     </>
-                                   )}
-                                 </div>
-                               </div>
-                             </div>
-                             
+                                    <div>
+                                        <h4>Tour Itineraries</h4>
+                                        {/*Day */}
+                                        <div className="mb-3">
+                                            <label htmlFor="itineraryTitle" className="form-label">
+                                                Day
+                                            </label>
+                                            <input
+                                                type="text"
+                                                id="day"
+                                                className="form-control"
+                                                value={formData.day}
+                                                onChange={(e) =>
+                                                    setFormData({ ...formData, day: e.target.value })
+                                                }
+                                                placeholder="Enter days"
+                                            />
+                                        </div>
+
+                                        {/*Head */}
+                                        <div className="mb-3">
+                                            <label htmlFor="head" className="form-label">
+                                                Heading
+                                            </label>
+                                            <input
+                                                id="head"
+                                                className="form-control"
+                                                // rows="3"
+                                                value={formData.head}
+                                                onChange={(e) =>
+                                                    setFormData({ ...formData, head: e.target.value })
+                                                }
+                                                placeholder="Enter Heading"
+                                            />
+                                        </div>
+
+                                        {/*description*/}
+                                        <div className="mb-3">
+                                            <label htmlFor="description" className="form-label">
+                                                Description
+                                            </label>
+                                            <textarea
+                                                type="text"
+                                                id="description"
+                                                className="form-control"
+                                                rows="2"
+                                                value={formData.description}
+                                                onChange={(e) =>
+                                                    setFormData({
+                                                        ...formData,
+                                                        description: e.target.value,
+                                                    })
+                                                }
+                                                placeholder="Enter description "
+                                            />
+                                        </div>
+
+                                        <div className="mb-3">
+                                            <label htmlFor="notes" className="form-label">
+                                                Notes
+                                            </label>
+                                            <input
+                                                type="text"
+                                                id="notes"
+                                                className="form-control"
+                                                value={formData.notes}
+                                                onChange={(e) =>
+                                                    setFormData({ ...formData, notes: e.target.value })
+                                                }
+                                                placeholder="Enter notes"
+                                            />
+                                        </div>
+
+                                        {/* Table for Itineraries */}
+                                        <div className="mt-4">
+                                            <h5>Itinerary Details</h5>
+                                            <table className="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Day</th>
+                                                        <th>Head</th>
+                                                        <th>Description</th>
+                                                        <th>Notes</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {itineraries.map((itinerary, index) => (
+                                                        <tr key={index}>
+                                                            <td>{itinerary.day}</td>
+                                                            <td>{itinerary.head}</td>
+                                                            <td>{itinerary.description}</td>
+                                                            <td>{itinerary.notes}</td>
+                                                        </tr>
+                                                    ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div style={{ display: "flex", gap: "15px" }}>
+                                            <button
+                                                className="btn btn-primary"
+                                                onClick={handleSubmit}
+                                            >
+                                                Add Day
+                                            </button>
+                                            {activeTab === "tour-itineraries" && (
+                                                <button
+                                                    className="btn btn-primary"
+                                                    onClick={() => {
+                                                        handleNextTour(); // Call the handleNext function
+                                                        setActiveTab("hotel-details"); // Move to the next tab
+                                                    }}
+                                                >
+                                                    Next
+                                                </button>
+                                            )}
+                                            {activeTab === "tour-itineraries" && (
+                                                <button
+                                                    className="btn btn-primary"
+                                                    onClick={() => {
+                                                        handleNextTour(); // Call the handleNext function
+                                                        setActiveTab("package-details"); // Move to the next tab
+                                                    }}
+                                                >
+                                                    Previous
+                                                </button>
+                                            )}
+                                        </div>
+                                    </div>
                                 )}
 
                                 {/* Hotel Details Tab */}
