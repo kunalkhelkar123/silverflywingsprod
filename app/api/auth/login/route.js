@@ -10,6 +10,13 @@ export const POST = async (request) => {
     const { email, password } = body;
     console.log("datat come from ui", body)
 
+
+
+
+
+
+
+    
     // Validate input
     if (!email || !password) {
       console.error("Validation failed: Missing email or password.");
