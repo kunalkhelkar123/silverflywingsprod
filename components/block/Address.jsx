@@ -5,7 +5,8 @@ const Address = () => {
       colClass: "col-lg-3",
       title: "Address",
       content: (
-        <>328 Queensberry Street, North Melbourne VIC 3051, Australia.</>
+        <>1226/3, F C Road, Behind Shruti Hall, Opp Apte School, Shivajinagar, Shivaji Nagar, Haveli, Pune- 411005, Maharashtra,
+India</>
       ),
     },
     {
