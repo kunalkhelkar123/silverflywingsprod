@@ -25,7 +25,7 @@ const LoginForm = () => {
 
       if (response.ok) {
         console.log("Login successful:", data);
-        localStorage.setItem("token", data.token); // Store JWT token
+        sessionStorage.setItem("token", data.token); // Store JWT token
         router.push("/admin-dashboard"); // Navigate to dashboard
       } else {
         console.error("Login failed:", data.message);
