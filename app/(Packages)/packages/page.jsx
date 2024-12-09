@@ -73,6 +73,7 @@ const Content = () => {
                 key={packages.package_id}
                 className="d-flex justify-content-center mb-4"
               >
+
                 <Card
                   className="shadow"
                   style={{
