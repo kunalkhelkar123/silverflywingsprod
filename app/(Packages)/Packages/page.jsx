@@ -13,6 +13,11 @@ const Content = () => {
 
   const [properties, setProperties] = useState([]);
 
+
+
+
+
+  
   useEffect(() => {
     const fetchPackageDetails = async () => {
       if (country) {
